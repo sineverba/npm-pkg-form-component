@@ -21,10 +21,12 @@ restart:
 	npm install --save-dev \
 		@types/jest \
 		coveralls \
+		eslint@8 \
+		eslint-config-prettier \
+		husky \
 		jest \
 		npm-check-updates \
 		prettier \
 		ts-jest \
-		eslint \
-		eslint-config-prettier \
-		typescript
+		typescript \
+		typescript-eslint
