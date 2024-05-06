@@ -1,0 +1,27 @@
+version: v1.0
+
+name: Deploy to NPM
+agent:
+  machine:
+    type: e1-standard-2
+    os_image: ubuntu2004
+
+global_job_config:
+  env_vars:
+    - name: NPM_VERSION
+      value: 10.7.0
+  secrets:
+    - name: ACCESS_TOKENS
+
+blocks:
+  - name: Deploy to NPM
+    task:
+      jobs:
+        - name: Deploy to NPM
+          commands:
+            - checkout
+            - npm install npm@$NPM_VERSION
+            - npm ci
+            - npm run build
+            - mv npmrc.txt .npmrc
+            - npm publish
