@@ -3,7 +3,7 @@ jobs:
   test:
     docker:
       - image: cimg/node:20.12.2
-    resource_class: small
+    resource_class: medium
     environment:
       NPM_VERSION: 10.7.0
     steps:
