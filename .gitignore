@@ -6,6 +6,7 @@ npm-debug.log
 .DS_Store
 .nyc_output
 .scannerwork/
+.test_report/
 data/
 lib/
 dist/

@@ -1,12 +1,10 @@
 version: 2.1
 jobs:
-
   test:
     docker:
       - image: cimg/node:20.12.2
     environment:
       NPM_VERSION: 10.7.0
-
     steps:
       - checkout
       - run:
@@ -18,7 +16,8 @@ jobs:
       - run:
           name: "Run test"
           command: npx jest
-
+      - store_test_results:
+          path: ./.test_report
 workflows:
   version: 2
   test:
