@@ -10,6 +10,8 @@ global_job_config:
   env_vars:
     - name: SONARSCANNER_VERSION
       value: 5.0.1
+    - name: NPM_VERSION
+      value: 10.7.0
   secrets:
     - name: ACCESS_TOKENS
 
@@ -38,7 +40,7 @@ blocks:
         - name: Test previous Node versions
           matrix:
             - env_var: NODE_VERSION
-              values: [ "14", "16", "18" ]
+              values: [ "16", "18" ]
           commands:
             - sem-version node $NODE_VERSION
             - npx jest
@@ -47,6 +49,7 @@ blocks:
             - rm -r node_modules/
             - nvm install
             - nvm use
+            - npm install npm@$NPM_VERSION
             - npm ci
             - npx jest
             - '[[ -f ./.test_report/junit.xml ]] && test-results publish ./.test_report/junit.xml'
