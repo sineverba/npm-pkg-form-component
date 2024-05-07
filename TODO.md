@@ -1,4 +1,0 @@
-TODO
-====
-
-+ Delete `tslint.json`
