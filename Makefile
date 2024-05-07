@@ -16,17 +16,3 @@ upgrade:
 	npx update-browserslist-db@latest
 	npm install
 	npm audit fix || exit 0;
-
-restart:
-	npm install --save-dev \
-		@types/jest \
-		coveralls \
-		eslint@8 \
-		eslint-config-prettier \
-		husky \
-		jest \
-		npm-check-updates \
-		prettier \
-		ts-jest \
-		typescript \
-		typescript-eslint
