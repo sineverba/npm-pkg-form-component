@@ -10,8 +10,6 @@ global_job_config:
   env_vars:
     - name: NPM_VERSION
       value: 10.7.0
-    - name: NODE_ENV
-      value: "production"
   secrets:
     - name: ACCESS_TOKENS
 
@@ -23,8 +21,7 @@ blocks:
           commands:
             - checkout
             - npm install npm@$NPM_VERSION
-            - npm pkg set scripts.prepare="echo no-prepare"
-            - npm ci --omit=dev
+            - npm ci
             - npm run build
             - mv npmrc.txt .npmrc
             - npm publish
