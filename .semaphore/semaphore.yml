@@ -10,6 +10,8 @@ global_job_config:
   env_vars:
     - name: SONARSCANNER_VERSION
       value: 5.0.1
+    - name: NPM_VERSION
+      value: 10.7.0
   secrets:
     - name: ACCESS_TOKENS
 
@@ -35,13 +37,23 @@ blocks:
           - checkout
           - cache restore
       jobs:
-        - name: Test
+        - name: Test previous Node versions
           matrix:
             - env_var: NODE_VERSION
-              values: [ "14", "16", "18", "20" ]
+              values: [ "16", "18" ]
           commands:
             - sem-version node $NODE_VERSION
             - npx jest
+        - name: Test current Node versions
+          commands:
+            - rm -r node_modules/
+            - nvm install
+            - nvm use
+            - npm install npm@$NPM_VERSION
+            - npm ci
+            - npx jest
+            - '[[ -f ./.test_report/junit.xml ]] && test-results publish ./.test_report/junit.xml'
+            - test-results gen-pipeline-report
         - name: Prettier
           commands:
             - rm -r node_modules/
