@@ -23,7 +23,8 @@ blocks:
           commands:
             - checkout
             - npm install npm@$NPM_VERSION
-            - npm ci --production
+            - npm ci --omit=dev
+            - npm pkg set scripts.prepare="echo no-prepare"
             - npm run build
             - mv npmrc.txt .npmrc
             - npm publish
