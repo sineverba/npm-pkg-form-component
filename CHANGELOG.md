@@ -2,3 +2,4 @@
 + First commit
 + Add Husky + Lint
 + Add FormComponent
++ Refactor CircleCI
