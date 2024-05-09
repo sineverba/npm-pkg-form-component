@@ -21,6 +21,9 @@ export const FormComponent: React.FC<{ field: any }> = (props) => {
     }
   };
 
+  const handleChange = (e: React.ChangeEvent<HTMLInputElement>) =>
+    field.onChange(e);
+
   /**
    * Creates the appropriate form component based on field type.
    * @returns The JSX representation of the form component.
@@ -63,6 +66,7 @@ export const FormComponent: React.FC<{ field: any }> = (props) => {
             name={field.name}
             className="mr-2 leading-tight"
             type="checkbox"
+            onChange={(e) => handleChange(e)}
           />
           <span className="text-sm">{field.label ?? field.name}</span>
         </label>
