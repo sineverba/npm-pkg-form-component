@@ -1,5 +1,6 @@
 # Next version
 + Upgrade dependencies
++ Add onChange to checkbox
 
 ## 0.1.3
 + Fix deploy

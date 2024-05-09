@@ -43,6 +43,7 @@ const fieldExample = {
 | label          | "Select an option", "Agree to terms"                 | N       |
 | name           | "fieldName"                                           | Y       |
 | onKeyDownRegex | "/^[a-zA-Z0-9]+$/"                                    | N       |
+| onChange | props.onChange props for `checkbox` type | N |
 | initialOption  | { value: "initial", label: "Please select" }         | N       |
 | options        | [{ value: "value1", label: "Option 1" },<br>{ value: "value2", label: "Option 2" }] | N       |
 
