@@ -58,12 +58,14 @@ describe("Test formComponent", () => {
       id: "beta",
       name: "betaCheckbox",
       label: "A checkbox beta labelled",
-      type: "checkbox"
+      type: "checkbox",
+      onChange: () => {}
     },
     {
       id: "beta",
       name: "betaCheckbox",
-      type: "checkbox"
+      type: "checkbox",
+      onChange: () => {}
     },
     {
       id: "fooWithLabel",
@@ -181,5 +183,14 @@ describe("Test formComponent", () => {
       name: /observations/i
     });
     expect(textAreaByRole).toBeInTheDocument();
+  });
+
+  it("Can handle onChange on checkbox", () => {
+    render(
+      <FormComponent field={fields.filter((field) => field.id === "beta")[0]} />
+    );
+    const checkbox = screen.getByLabelText(/A checkbox beta labelled/i);
+    expect(checkbox).toBeInTheDocument();
+    fireEvent.click(checkbox);
   });
 });

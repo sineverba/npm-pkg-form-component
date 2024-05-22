@@ -12,7 +12,9 @@ sonar:
 		sonarsource/sonar-scanner-cli:$(SONARSCANNER_VERSION)
 
 upgrade:
-	npx ncu -u
+	npx ncu \
+		-x eslint \
+		-u
 	npx update-browserslist-db@latest
 	npm install
 	npm audit fix || exit 0;
