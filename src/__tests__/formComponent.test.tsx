@@ -95,7 +95,7 @@ describe("Test formComponent", () => {
       name: "observations",
       type: "textarea",
       textAreaCols: 10
-    },
+    }
   ];
 
   it("Can render input text", () => {
