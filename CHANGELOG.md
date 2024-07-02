@@ -1,4 +1,7 @@
-# 0.2.0
+# Next version
++ Upgrade dependencies
+
+## 0.2.0
 + Upgrade dependencies
 + Add onChange to checkbox
 
