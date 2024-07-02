@@ -81,7 +81,13 @@ export const FormComponent: React.FC<{ field: any }> = (props) => {
           >
             {field.label ?? field.name}
           </label>
-          <textarea id={field.id} name={field.name} rows={4} cols={50} />
+          <textarea
+            className="textarea-fcta"
+            id={field.id}
+            name={field.name}
+            rows={field.textAreaRows ?? null}
+            cols={field.textAreaCols ?? null}
+          />
         </>
       );
     }
