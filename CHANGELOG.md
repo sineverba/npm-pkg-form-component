@@ -1,4 +1,8 @@
-# 0.2.0
+# 0.3.0
++ Upgrade dependencies
++ Add rows and cols as optional props for textarea
+
+## 0.2.0
 + Upgrade dependencies
 + Add onChange to checkbox
 

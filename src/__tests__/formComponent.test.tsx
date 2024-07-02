@@ -83,6 +83,18 @@ describe("Test formComponent", () => {
       name: "observations",
       label: "write down your observations",
       type: "textarea"
+    },
+    {
+      id: "observationsWithRows",
+      name: "observations",
+      type: "textarea",
+      textAreaRows: 10
+    },
+    {
+      id: "observationsWithCols",
+      name: "observations",
+      type: "textarea",
+      textAreaCols: 10
     }
   ];
 
@@ -192,5 +204,35 @@ describe("Test formComponent", () => {
     const checkbox = screen.getByLabelText(/A checkbox beta labelled/i);
     expect(checkbox).toBeInTheDocument();
     fireEvent.click(checkbox);
+  });
+
+  it("Can render textarea with specified rows", () => {
+    render(
+      <FormComponent
+        field={fields.filter((field) => field.id === "observationsWithRows")[0]}
+      />
+    );
+    const textArea = screen.getByLabelText(/observations/i);
+    expect(textArea).toBeInTheDocument();
+
+    const textAreaByRole = screen.getByRole("textbox", {
+      name: /observations/i
+    });
+    expect(textAreaByRole).toBeInTheDocument();
+  });
+
+  it("Can render textarea with specified cols", () => {
+    render(
+      <FormComponent
+        field={fields.filter((field) => field.id === "observationsWithCols")[0]}
+      />
+    );
+    const textArea = screen.getByLabelText(/observations/i);
+    expect(textArea).toBeInTheDocument();
+
+    const textAreaByRole = screen.getByRole("textbox", {
+      name: /observations/i
+    });
+    expect(textAreaByRole).toBeInTheDocument();
   });
 });
