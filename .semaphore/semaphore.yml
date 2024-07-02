@@ -9,9 +9,9 @@ agent:
 global_job_config:
   env_vars:
     - name: SONARSCANNER_VERSION
-      value: 5.0.1
+      value: 10.0.3.1430_5.0.1
     - name: NPM_VERSION
-      value: 10.7.0
+      value: 10.8.1
   secrets:
     - name: ACCESS_TOKENS
 

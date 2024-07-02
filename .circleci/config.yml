@@ -2,10 +2,10 @@ version: 2.1
 jobs:
   test:
     docker:
-      - image: cimg/node:20.13.0
+      - image: cimg/node:20.15.0
     resource_class: medium
     environment:
-      NPM_VERSION: 10.7.0
+      NPM_VERSION: 10.8.1
     steps:
       - checkout
       - run:
