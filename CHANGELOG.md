@@ -1,4 +1,4 @@
-# Next version
+# 0.3.0
 + Upgrade dependencies
 + Add rows and cols as optional props for textarea
 
