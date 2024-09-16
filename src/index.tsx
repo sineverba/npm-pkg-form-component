@@ -3,7 +3,7 @@ import React from "react";
 /**
  * A functional component for rendering form fields based on given properties.
  * This component dynamically creates form fields such as text inputs, password inputs, checkboxes, select boxes, and text areas based on the `field` prop.
- * 
+ *
  * @param props The properties for the form component.
  * @returns The JSX representation of the form component.
  */
@@ -13,7 +13,7 @@ export const FormComponent: React.FC<{ field: any }> = (props) => {
   /**
    * Handles the key down event for text and password inputs.
    * Prevents the default action if the pressed key matches the specified regular expression in `field.onKeyDownRegex`.
-   * 
+   *
    * @param e The key down event object.
    */
   const handleKeyDown = (e: React.KeyboardEvent<HTMLInputElement>) => {
@@ -27,7 +27,7 @@ export const FormComponent: React.FC<{ field: any }> = (props) => {
 
   /**
    * Handles the change event for inputs, invoking the `onChange` callback provided in the `field` prop.
-   * 
+   *
    * @param e The change event object.
    */
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) =>
@@ -35,7 +35,7 @@ export const FormComponent: React.FC<{ field: any }> = (props) => {
 
   /**
    * Creates and returns the appropriate form component based on the `field.type` property.
-   * 
+   *
    * @returns The JSX representation of the form component.
    */
   const createFormComponent = (): JSX.Element => {
