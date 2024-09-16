@@ -156,7 +156,9 @@ describe("FormComponent Tests", () => {
     const alfaSelect = screen.getByLabelText(/selectAlfa/i);
     expect(alfaSelect).toBeInTheDocument();
 
-    const alfaSelectByRole = screen.getByRole("combobox", { name: /selectAlfa/i });
+    const alfaSelectByRole = screen.getByRole("combobox", {
+      name: /selectAlfa/i
+    });
     expect(alfaSelectByRole).toBeInTheDocument();
   });
 
@@ -165,7 +167,9 @@ describe("FormComponent Tests", () => {
    */
   it("should render checkbox with label", () => {
     render(<FormComponent field={fields[4]} />);
-    const checkbox = screen.getByRole("checkbox", { name: /a checkbox beta labelled/i });
+    const checkbox = screen.getByRole("checkbox", {
+      name: /a checkbox beta labelled/i
+    });
     expect(checkbox).toBeInTheDocument();
   });
 
@@ -183,9 +187,13 @@ describe("FormComponent Tests", () => {
    */
   it("should render text input field with a label", () => {
     render(
-      <FormComponent field={fields.filter((field) => field.id === "fooWithLabel")[0]} />
+      <FormComponent
+        field={fields.filter((field) => field.id === "fooWithLabel")[0]}
+      />
     );
-    const fooNameInputText = screen.getByLabelText(/this is a different label/i);
+    const fooNameInputText = screen.getByLabelText(
+      /this is a different label/i
+    );
     expect(fooNameInputText).toBeInTheDocument();
   });
 
@@ -194,12 +202,16 @@ describe("FormComponent Tests", () => {
    */
   it("should render textarea without label", () => {
     render(
-      <FormComponent field={fields.filter((field) => field.id === "observations")[0]} />
+      <FormComponent
+        field={fields.filter((field) => field.id === "observations")[0]}
+      />
     );
     const textArea = screen.getByLabelText(/observations/i);
     expect(textArea).toBeInTheDocument();
 
-    const textAreaByRole = screen.getByRole("textbox", { name: /observations/i });
+    const textAreaByRole = screen.getByRole("textbox", {
+      name: /observations/i
+    });
     expect(textAreaByRole).toBeInTheDocument();
   });
 
@@ -208,12 +220,18 @@ describe("FormComponent Tests", () => {
    */
   it("should render textarea with label", () => {
     render(
-      <FormComponent field={fields.filter((field) => field.id === "observationsWithLabel")[0]} />
+      <FormComponent
+        field={
+          fields.filter((field) => field.id === "observationsWithLabel")[0]
+        }
+      />
     );
     const textArea = screen.getByLabelText(/write down your observations/i);
     expect(textArea).toBeInTheDocument();
 
-    const textAreaByRole = screen.getByRole("textbox", { name: /observations/i });
+    const textAreaByRole = screen.getByRole("textbox", {
+      name: /observations/i
+    });
     expect(textAreaByRole).toBeInTheDocument();
   });
 
@@ -234,12 +252,16 @@ describe("FormComponent Tests", () => {
    */
   it("should render textarea with specified rows", () => {
     render(
-      <FormComponent field={fields.filter((field) => field.id === "observationsWithRows")[0]} />
+      <FormComponent
+        field={fields.filter((field) => field.id === "observationsWithRows")[0]}
+      />
     );
     const textArea = screen.getByLabelText(/observations/i);
     expect(textArea).toBeInTheDocument();
 
-    const textAreaByRole = screen.getByRole("textbox", { name: /observations/i });
+    const textAreaByRole = screen.getByRole("textbox", {
+      name: /observations/i
+    });
     expect(textAreaByRole).toBeInTheDocument();
   });
 
@@ -248,12 +270,16 @@ describe("FormComponent Tests", () => {
    */
   it("should render textarea with specified cols", () => {
     render(
-      <FormComponent field={fields.filter((field) => field.id === "observationsWithCols")[0]} />
+      <FormComponent
+        field={fields.filter((field) => field.id === "observationsWithCols")[0]}
+      />
     );
     const textArea = screen.getByLabelText(/observations/i);
     expect(textArea).toBeInTheDocument();
 
-    const textAreaByRole = screen.getByRole("textbox", { name: /observations/i });
+    const textAreaByRole = screen.getByRole("textbox", {
+      name: /observations/i
+    });
     expect(textAreaByRole).toBeInTheDocument();
   });
 
@@ -263,17 +289,19 @@ describe("FormComponent Tests", () => {
   it("should render password input field and verify its type", () => {
     // Render the FormComponent with the password field configuration
     render(
-      <FormComponent field={fields.filter((field) => field.id === "password")[0]} />
+      <FormComponent
+        field={fields.filter((field) => field.id === "password")[0]}
+      />
     );
-  
+
     // Retrieve the password input element by its label
     const passwordInput = screen.getByLabelText(/password/i);
-    
+
     // Check if the password input element is in the document
     expect(passwordInput).toBeInTheDocument();
-  
+
     // Verify that the input field's type is 'password'
-    expect(passwordInput).toHaveAttribute('type', 'password');
+    expect(passwordInput).toHaveAttribute("type", "password");
   });
 
   /**
@@ -282,16 +310,18 @@ describe("FormComponent Tests", () => {
   it("should render password input field with a custom labeo and verify its type", () => {
     // Render the FormComponent with the password field configuration
     render(
-      <FormComponent field={fields.filter((field) => field.id === "passwordCustomLabel")[0]} />
+      <FormComponent
+        field={fields.filter((field) => field.id === "passwordCustomLabel")[0]}
+      />
     );
-  
+
     // Retrieve the password input element by its label
     const passwordInput = screen.getByLabelText(/your strong password/i);
-    
+
     // Check if the password input element is in the document
     expect(passwordInput).toBeInTheDocument();
-  
+
     // Verify that the input field's type is 'password'
-    expect(passwordInput).toHaveAttribute('type', 'password');
+    expect(passwordInput).toHaveAttribute("type", "password");
   });
 });
