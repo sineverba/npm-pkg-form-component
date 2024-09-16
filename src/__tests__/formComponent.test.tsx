@@ -2,7 +2,8 @@ import React from "react";
 import { fireEvent, render, screen } from "@testing-library/react";
 import { FormComponent } from "../index";
 
-describe("Test formComponent", () => {
+describe("FormComponent Tests", () => {
+  // Array of field definitions used for testing the FormComponent
   const fields = [
     {
       id: "foo",
@@ -95,25 +96,46 @@ describe("Test formComponent", () => {
       name: "observations",
       type: "textarea",
       textAreaCols: 10
+    },
+    {
+      id: "password",
+      name: "password",
+      type: "password"
+    },
+    {
+      id: "passwordCustomLabel",
+      name: "password",
+      label: "your strong password",
+      type: "password"
     }
   ];
 
-  it("Can render input text", () => {
+  /**
+   * Test if the FormComponent can render a text input field.
+   */
+  it("should render text input field", () => {
     render(<FormComponent field={fields[0]} />);
     const fooNameInputText = screen.getByLabelText(/fooName/i);
     expect(fooNameInputText).toBeInTheDocument();
   });
 
-  it("Can handle input text with onKeyDown set", () => {
+  /**
+   * Test if the FormComponent handles key down events on a text input with an onKeyDown regex.
+   */
+  it("should handle key down events with onKeyDown set", () => {
     render(<FormComponent field={fields[1]} />);
     const barNameInputText = screen.getByLabelText(/barName/i);
     expect(barNameInputText).toBeInTheDocument();
 
+    // Simulate key down events.
     fireEvent.keyDown(barNameInputText, { key: "a" });
     fireEvent.keyDown(barNameInputText, { key: "?" });
   });
 
-  it("Can render input select", () => {
+  /**
+   * Test if the FormComponent can render a select input field with options.
+   */
+  it("should render select input field", () => {
     render(<FormComponent field={fields[2]} />);
     const bazNameSelect = screen.getByLabelText(/pick a choice/i);
     expect(bazNameSelect).toBeInTheDocument();
@@ -121,83 +143,84 @@ describe("Test formComponent", () => {
     const bazSelect = screen.getByRole("combobox", { name: /pick a choice/i });
     expect(bazSelect).toBeInTheDocument();
 
-    // Options quantity
+    // Verify the number of options in the select field.
     const options = screen.getAllByRole("option");
     expect(options).toHaveLength(3);
   });
 
-  it("Can render input select without label", () => {
+  /**
+   * Test if the FormComponent can render a select input field without a label.
+   */
+  it("should render select input field without label", () => {
     render(<FormComponent field={fields[3]} />);
     const alfaSelect = screen.getByLabelText(/selectAlfa/i);
     expect(alfaSelect).toBeInTheDocument();
 
-    const alfaSelectByRole = screen.getByRole("combobox", {
-      name: /selectAlfa/i
-    });
+    const alfaSelectByRole = screen.getByRole("combobox", { name: /selectAlfa/i });
     expect(alfaSelectByRole).toBeInTheDocument();
   });
 
-  it("Can render checkbox", () => {
+  /**
+   * Test if the FormComponent can render a checkbox with a label.
+   */
+  it("should render checkbox with label", () => {
     render(<FormComponent field={fields[4]} />);
-    const checkbox = screen.getByRole("checkbox", {
-      name: /a checkbox beta labelled/i
-    });
+    const checkbox = screen.getByRole("checkbox", { name: /a checkbox beta labelled/i });
     expect(checkbox).toBeInTheDocument();
   });
 
-  it("Can render checkbox without label", () => {
+  /**
+   * Test if the FormComponent can render a checkbox without a label.
+   */
+  it("should render checkbox without label", () => {
     render(<FormComponent field={fields[5]} />);
-    const checkbox = screen.getByRole("checkbox", {
-      name: /betaCheckbox/i
-    });
+    const checkbox = screen.getByRole("checkbox", { name: /betaCheckbox/i });
     expect(checkbox).toBeInTheDocument();
   });
 
-  it("Can render input text with a label", () => {
+  /**
+   * Test if the FormComponent can render a text input field with a label.
+   */
+  it("should render text input field with a label", () => {
     render(
-      <FormComponent
-        field={fields.filter((field) => field.id === "fooWithLabel")[0]}
-      />
+      <FormComponent field={fields.filter((field) => field.id === "fooWithLabel")[0]} />
     );
-    const fooNameInputText = screen.getByLabelText(
-      /this is a different label/i
-    );
+    const fooNameInputText = screen.getByLabelText(/this is a different label/i);
     expect(fooNameInputText).toBeInTheDocument();
   });
 
-  it("Can render textarea without label", () => {
+  /**
+   * Test if the FormComponent can render a textarea without a label.
+   */
+  it("should render textarea without label", () => {
     render(
-      <FormComponent
-        field={fields.filter((field) => field.id === "observations")[0]}
-      />
+      <FormComponent field={fields.filter((field) => field.id === "observations")[0]} />
     );
     const textArea = screen.getByLabelText(/observations/i);
     expect(textArea).toBeInTheDocument();
 
-    const textAreaByRole = screen.getByRole("textbox", {
-      name: /observations/i
-    });
+    const textAreaByRole = screen.getByRole("textbox", { name: /observations/i });
     expect(textAreaByRole).toBeInTheDocument();
   });
 
-  it("Can render textarea with label", () => {
+  /**
+   * Test if the FormComponent can render a textarea with a label.
+   */
+  it("should render textarea with label", () => {
     render(
-      <FormComponent
-        field={
-          fields.filter((field) => field.id === "observationsWithLabel")[0]
-        }
-      />
+      <FormComponent field={fields.filter((field) => field.id === "observationsWithLabel")[0]} />
     );
     const textArea = screen.getByLabelText(/write down your observations/i);
     expect(textArea).toBeInTheDocument();
 
-    const textAreaByRole = screen.getByRole("textbox", {
-      name: /observations/i
-    });
+    const textAreaByRole = screen.getByRole("textbox", { name: /observations/i });
     expect(textAreaByRole).toBeInTheDocument();
   });
 
-  it("Can handle onChange on checkbox", () => {
+  /**
+   * Test if the FormComponent can handle the onChange event for a checkbox.
+   */
+  it("should handle onChange event on checkbox", () => {
     render(
       <FormComponent field={fields.filter((field) => field.id === "beta")[0]} />
     );
@@ -206,33 +229,69 @@ describe("Test formComponent", () => {
     fireEvent.click(checkbox);
   });
 
-  it("Can render textarea with specified rows", () => {
+  /**
+   * Test if the FormComponent can render a textarea with specified rows.
+   */
+  it("should render textarea with specified rows", () => {
     render(
-      <FormComponent
-        field={fields.filter((field) => field.id === "observationsWithRows")[0]}
-      />
+      <FormComponent field={fields.filter((field) => field.id === "observationsWithRows")[0]} />
     );
     const textArea = screen.getByLabelText(/observations/i);
     expect(textArea).toBeInTheDocument();
 
-    const textAreaByRole = screen.getByRole("textbox", {
-      name: /observations/i
-    });
+    const textAreaByRole = screen.getByRole("textbox", { name: /observations/i });
     expect(textAreaByRole).toBeInTheDocument();
   });
 
-  it("Can render textarea with specified cols", () => {
+  /**
+   * Test if the FormComponent can render a textarea with specified columns.
+   */
+  it("should render textarea with specified cols", () => {
     render(
-      <FormComponent
-        field={fields.filter((field) => field.id === "observationsWithCols")[0]}
-      />
+      <FormComponent field={fields.filter((field) => field.id === "observationsWithCols")[0]} />
     );
     const textArea = screen.getByLabelText(/observations/i);
     expect(textArea).toBeInTheDocument();
 
-    const textAreaByRole = screen.getByRole("textbox", {
-      name: /observations/i
-    });
+    const textAreaByRole = screen.getByRole("textbox", { name: /observations/i });
     expect(textAreaByRole).toBeInTheDocument();
+  });
+
+  /**
+   * Test if the FormComponent can render a password input field.
+   */
+  it("should render password input field and verify its type", () => {
+    // Render the FormComponent with the password field configuration
+    render(
+      <FormComponent field={fields.filter((field) => field.id === "password")[0]} />
+    );
+  
+    // Retrieve the password input element by its label
+    const passwordInput = screen.getByLabelText(/password/i);
+    
+    // Check if the password input element is in the document
+    expect(passwordInput).toBeInTheDocument();
+  
+    // Verify that the input field's type is 'password'
+    expect(passwordInput).toHaveAttribute('type', 'password');
+  });
+
+  /**
+   * Test if the FormComponent can render a password input field.
+   */
+  it("should render password input field with a custom labeo and verify its type", () => {
+    // Render the FormComponent with the password field configuration
+    render(
+      <FormComponent field={fields.filter((field) => field.id === "passwordCustomLabel")[0]} />
+    );
+  
+    // Retrieve the password input element by its label
+    const passwordInput = screen.getByLabelText(/your strong password/i);
+    
+    // Check if the password input element is in the document
+    expect(passwordInput).toBeInTheDocument();
+  
+    // Verify that the input field's type is 'password'
+    expect(passwordInput).toHaveAttribute('type', 'password');
   });
 });
