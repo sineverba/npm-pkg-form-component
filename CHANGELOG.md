@@ -1,5 +1,6 @@
 # Next version
 + Upgrade dependencies
++ Add input password text
 
 ## 0.3.0
 + Upgrade dependencies
