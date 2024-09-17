@@ -1,6 +1,6 @@
 {
   "name": "@sineverba/form-component",
-  "version": "0.3.0",
+  "version": "0.4.0",
   "description": "Returns a form",
   "files": [
     "dist/**/*"
@@ -14,9 +14,8 @@
     "build": "tsc",
     "test": "jest --watchAll",
     "coverage": "jest --coverage",
-    "lint": "eslint .",
-    "prettier": "prettier -c \"src/**/*.ts*\"",
-    "fixprettier": "prettier --write \"src/**/*.ts\"",
+    "lint": "npx prettier --config .prettierrc.json -c .",
+    "fixlint": "npx prettier --config .prettierrc.json -w .",
     "prepare": "husky"
   },
   "engines": {
@@ -51,8 +50,8 @@
     "jest-junit": "^16.0.0",
     "npm-check-updates": "^16.14.20",
     "prettier": "^3.3.2",
-    "ts-jest": "^29.1.5",
+    "ts-jest": "^29.2.1",
     "typescript": "^5.5.3",
-    "typescript-eslint": "^7.15.0"
+    "typescript-eslint": "^7.16.0"
   }
 }

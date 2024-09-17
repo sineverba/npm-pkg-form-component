@@ -2,6 +2,8 @@ import React from "react";
 
 /**
  * A functional component for rendering form fields based on given properties.
+ * This component dynamically creates form fields such as text inputs, password inputs, checkboxes, select boxes, and text areas based on the `field` prop.
+ *
  * @param props The properties for the form component.
  * @returns The JSX representation of the form component.
  */
@@ -9,7 +11,9 @@ export const FormComponent: React.FC<{ field: any }> = (props) => {
   const { field } = props;
 
   /**
-   * Handles key down event.
+   * Handles the key down event for text and password inputs.
+   * Prevents the default action if the pressed key matches the specified regular expression in `field.onKeyDownRegex`.
+   *
    * @param e The key down event object.
    */
   const handleKeyDown = (e: React.KeyboardEvent<HTMLInputElement>) => {
@@ -21,93 +25,117 @@ export const FormComponent: React.FC<{ field: any }> = (props) => {
     }
   };
 
+  /**
+   * Handles the change event for inputs, invoking the `onChange` callback provided in the `field` prop.
+   *
+   * @param e The change event object.
+   */
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) =>
     field.onChange(e);
 
   /**
-   * Creates the appropriate form component based on field type.
+   * Creates and returns the appropriate form component based on the `field.type` property.
+   *
    * @returns The JSX representation of the form component.
    */
   const createFormComponent = (): JSX.Element => {
-    if (field.type === "select") {
-      return (
-        <>
-          <label
-            htmlFor={field.id}
-            className="block text-xs text-gray-600 uppercase"
-          >
-            {field.label ?? field.name}
-          </label>
-          <select
-            className="block appearance-none w-full bg-gray-200 border border-gray-200 text-gray-700 py-3 px-4 pr-8 rounded leading-tight focus:outline-none focus:bg-white focus:border-gray-500"
-            id={field.id}
-            name={field.name}
-          >
-            <option value={field.initialOption.value}>
-              {field.initialOption.label}
-            </option>
-            {field.options.map((option: any) => (
-              <option key={option.value} value={option.value}>
-                {option.label}
+    switch (field.type) {
+      case "select":
+        return (
+          <>
+            <label
+              htmlFor={field.id}
+              className="block text-xs text-gray-600 uppercase"
+            >
+              {field.label ?? field.name}
+            </label>
+            <select
+              className="block appearance-none w-full bg-gray-200 border border-gray-200 text-gray-700 py-3 px-4 pr-8 rounded leading-tight focus:outline-none focus:bg-white focus:border-gray-500"
+              id={field.id}
+              name={field.name}
+            >
+              <option value={field.initialOption.value}>
+                {field.initialOption.label}
               </option>
-            ))}
-          </select>
-        </>
-      );
-    }
-    if (field.type === "checkbox") {
-      return (
-        <label
-          htmlFor={field.id}
-          className="md:w-2/3 block text-gray-500 font-bold"
-        >
-          <input
-            id={field.id}
-            name={field.name}
-            className="mr-2 leading-tight"
-            type="checkbox"
-            onChange={(e) => handleChange(e)}
-          />
-          <span className="text-sm">{field.label ?? field.name}</span>
-        </label>
-      );
-    }
-    if (field.type === "textarea") {
-      return (
-        <>
+              {field.options.map((option: any) => (
+                <option key={option.value} value={option.value}>
+                  {option.label}
+                </option>
+              ))}
+            </select>
+          </>
+        );
+      case "checkbox":
+        return (
           <label
             htmlFor={field.id}
-            className="block text-xs text-gray-600 uppercase"
+            className="md:w-2/3 block text-gray-500 font-bold"
           >
-            {field.label ?? field.name}
+            <input
+              id={field.id}
+              name={field.name}
+              className="mr-2 leading-tight"
+              type="checkbox"
+              onChange={(e) => handleChange(e)}
+            />
+            <span className="text-sm">{field.label ?? field.name}</span>
           </label>
-          <textarea
-            className="textarea-fcta"
-            id={field.id}
-            name={field.name}
-            rows={field.textAreaRows ?? null}
-            cols={field.textAreaCols ?? null}
-          />
-        </>
-      );
+        );
+      case "textarea":
+        return (
+          <>
+            <label
+              htmlFor={field.id}
+              className="block text-xs text-gray-600 uppercase"
+            >
+              {field.label ?? field.name}
+            </label>
+            <textarea
+              className="textarea-fcta"
+              id={field.id}
+              name={field.name}
+              rows={field.textAreaRows ?? null}
+              cols={field.textAreaCols ?? null}
+            />
+          </>
+        );
+      case "password":
+        return (
+          <>
+            <label
+              htmlFor={field.id}
+              className="block text-xs text-gray-600 uppercase"
+            >
+              {field.label ?? field.name}
+            </label>
+            <input
+              id={field.id}
+              type={field.type}
+              name={field.name}
+              className="mt-1 block w-full appearance-none rounded-md border border-gray-300 px-3 py-2 placeholder-gray-400 shadow-sm focus:border-black focus:outline-none focus:ring-black sm:text-sm"
+              onKeyDown={handleKeyDown}
+            />
+          </>
+        );
+      default:
+        return (
+          <>
+            <label
+              htmlFor={field.id}
+              className="block text-xs text-gray-600 uppercase"
+            >
+              {field.label ?? field.name}
+            </label>
+            <input
+              id={field.id}
+              type="text"
+              name={field.name}
+              className="mt-1 block w-full appearance-none rounded-md border border-gray-300 px-3 py-2 placeholder-gray-400 shadow-sm focus:border-black focus:outline-none focus:ring-black sm:text-sm"
+              onKeyDown={handleKeyDown}
+            />
+          </>
+        );
     }
-    return (
-      <>
-        <label
-          htmlFor={field.id}
-          className="block text-xs text-gray-600 uppercase"
-        >
-          {field.label ?? field.name}
-        </label>
-        <input
-          id={field.id}
-          type="text"
-          name={field.name}
-          className="mt-1 block w-full appearance-none rounded-md border border-gray-300 px-3 py-2 placeholder-gray-400 shadow-sm focus:border-black focus:outline-none focus:ring-black sm:text-sm"
-          onKeyDown={handleKeyDown}
-        />
-      </>
-    );
   };
 
   return createFormComponent();
