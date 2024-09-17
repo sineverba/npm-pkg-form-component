@@ -1,6 +1,7 @@
 # Next version
 + Upgrade dependencies
 + Add input password text
++ Fix Husky and lint
 
 ## 0.3.0
 + Upgrade dependencies

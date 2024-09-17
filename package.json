@@ -14,9 +14,8 @@
     "build": "tsc",
     "test": "jest --watchAll",
     "coverage": "jest --coverage",
-    "lint": "eslint .",
-    "prettier": "prettier -c \"src/**/*.ts*\"",
-    "fixprettier": "prettier --write \"src/**/*.ts\"",
+    "lint": "npx prettier --config .prettierrc.json -c .",
+    "fixlint": "npx prettier --config .prettierrc.json -w .",
     "prepare": "husky"
   },
   "engines": {

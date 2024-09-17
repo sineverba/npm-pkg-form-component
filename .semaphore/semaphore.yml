@@ -54,13 +54,13 @@ blocks:
             - npx jest
             - '[[ -f ./.test_report/junit.xml ]] && test-results publish ./.test_report/junit.xml'
             - test-results gen-pipeline-report
-        - name: Prettier
+        - name: Lint
           commands:
             - rm -r node_modules/
             - nvm install
             - nvm use
             - npm ci
-            - npm run prettier
+            - npm run lint
 
   - name: Coverage
     skip:
