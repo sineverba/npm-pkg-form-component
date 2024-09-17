@@ -1,4 +1,4 @@
-# Next version
+# 0.4.0
 + Upgrade dependencies
 + Add input password text
 + Fix Husky and lint
