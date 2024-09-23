@@ -1,5 +1,6 @@
 # Next version
 + Upgrade dependencies
++ Add onChange on select
 
 ## 0.4.1
 + Fix select

@@ -1,5 +1,6 @@
 import React from "react";
 import { fireEvent, render, screen } from "@testing-library/react";
+import userEvent from "@testing-library/user-event"; // Importa user-event
 import { FormComponent } from "../index";
 
 describe("FormComponent Tests", () => {
@@ -112,7 +113,12 @@ describe("FormComponent Tests", () => {
       id: "collection",
       name: "collection",
       label: "collection",
-      type: "select"
+      type: "select",
+      options: [
+        { value: 1, label: "foo" },
+        { value: 2, label: "bar" }
+      ],
+      onChange: () => {}
     }
   ];
 
@@ -339,5 +345,27 @@ describe("FormComponent Tests", () => {
     );
     const select = screen.getByLabelText(/collection/i);
     expect(select).toBeInTheDocument();
+  });
+
+  /**
+   * Test if the FormComponent can handle the onChange event for a select.
+   */
+  it("should handle onChange event on select", async () => {
+    const handleChange = jest.fn(); // Mock della funzione onChange
+    render(
+      <FormComponent
+        field={{
+          ...fields.filter((field) => field.id === "collection")[0],
+          onChange: handleChange // Passa la funzione mock
+        }}
+      />
+    );
+
+    const select = screen.getByLabelText(/collection/i);
+    expect(select).toBeInTheDocument();
+
+    await userEvent.selectOptions(select, "2"); // Get second value
+
+    expect(handleChange).toHaveBeenCalledTimes(1);
   });
 });
