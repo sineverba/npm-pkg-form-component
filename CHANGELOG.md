@@ -1,4 +1,7 @@
-# 0.4.0
+# 0.4.1
++ Fix select
+
+## 0.4.0
 + Upgrade dependencies
 + Add input password text
 + Fix Husky and lint

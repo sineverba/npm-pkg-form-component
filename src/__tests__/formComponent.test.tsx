@@ -107,6 +107,12 @@ describe("FormComponent Tests", () => {
       name: "password",
       label: "your strong password",
       type: "password"
+    },
+    {
+      id: "collection",
+      name: "collection",
+      label: "collection",
+      type: "select"
     }
   ];
 
@@ -323,5 +329,15 @@ describe("FormComponent Tests", () => {
 
     // Verify that the input field's type is 'password'
     expect(passwordInput).toHaveAttribute("type", "password");
+  });
+
+  it("Can handle select without options neither initialOptions", () => {
+    render(
+      <FormComponent
+        field={fields.filter((field) => field.id === "collection")[0]}
+      />
+    );
+    const select = screen.getByLabelText(/collection/i);
+    expect(select).toBeInTheDocument();
   });
 });

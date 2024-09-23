@@ -43,28 +43,40 @@ export const FormComponent: React.FC<{ field: any }> = (props) => {
       case "select":
         return (
           <>
+            {/* Label for the select input */}
             <label
               htmlFor={field.id}
               className="block text-xs text-gray-600 uppercase"
             >
+              {/* Display label if available, else fallback to field name */}
               {field.label ?? field.name}
             </label>
+
+            {/* Select input field */}
             <select
               className="block appearance-none w-full bg-gray-200 border border-gray-200 text-gray-700 py-3 px-4 pr-8 rounded leading-tight focus:outline-none focus:bg-white focus:border-gray-500"
               id={field.id}
               name={field.name}
             >
-              <option value={field.initialOption.value}>
-                {field.initialOption.label}
-              </option>
-              {field.options.map((option: any) => (
-                <option key={option.value} value={option.value}>
-                  {option.label}
+              {/* Optionally render the initial option if it exists */}
+              {field.initialOption && (
+                <option value={field.initialOption.value}>
+                  {field.initialOption.label}
                 </option>
-              ))}
+              )}
+
+              {/* Render options if available, mapping through the array */}
+              {field.options &&
+                field.options.length > 0 &&
+                field.options.map((option: any) => (
+                  <option key={option.value} value={option.value}>
+                    {option.label}
+                  </option>
+                ))}
             </select>
           </>
         );
+
       case "checkbox":
         return (
           <label
