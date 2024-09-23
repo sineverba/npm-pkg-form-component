@@ -1,4 +1,8 @@
-# 0.4.1
+# 0.5.0
++ Upgrade dependencies
++ Add onChange on select
+
+## 0.4.1
 + Fix select
 
 ## 0.4.0

@@ -30,8 +30,9 @@ export const FormComponent: React.FC<{ field: any }> = (props) => {
    *
    * @param e The change event object.
    */
-  const handleChange = (e: React.ChangeEvent<HTMLInputElement>) =>
-    field.onChange(e);
+  const handleChange = (
+    e: React.ChangeEvent<HTMLSelectElement | HTMLInputElement>
+  ) => field.onChange(e);
 
   /**
    * Creates and returns the appropriate form component based on the `field.type` property.
@@ -57,6 +58,7 @@ export const FormComponent: React.FC<{ field: any }> = (props) => {
               className="block appearance-none w-full bg-gray-200 border border-gray-200 text-gray-700 py-3 px-4 pr-8 rounded leading-tight focus:outline-none focus:bg-white focus:border-gray-500"
               id={field.id}
               name={field.name}
+              onChange={(e) => handleChange(e)}
             >
               {/* Optionally render the initial option if it exists */}
               {field.initialOption && (
