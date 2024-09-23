@@ -1,4 +1,7 @@
-# 0.4.1
+# Next version
++ Upgrade dependencies
+
+## 0.4.1
 + Fix select
 
 ## 0.4.0
