@@ -1,4 +1,4 @@
-SONARSCANNER_VERSION=11.0.1.1589_6.1.0
+SONARSCANNER_VERSION=11.1.1.1661_6.2.1
 
 sonar:
 	docker run \
@@ -13,6 +13,8 @@ sonar:
 
 upgrade:
 	npx ncu \
+		-x @testing-library/react \
+		-x @types/react \
 		-x eslint \
 		-u
 	npx update-browserslist-db@latest
