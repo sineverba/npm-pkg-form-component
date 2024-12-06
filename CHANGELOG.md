@@ -1,4 +1,7 @@
-# 0.5.0
+# Next version
++ Upgrade dependencies
+
+## 0.5.0
 + Upgrade dependencies
 + Add onChange on select
 
