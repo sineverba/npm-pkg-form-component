@@ -30,7 +30,8 @@ const fieldExample = {
   options: [
     { value: "value1", label: "Option 1" },
     { value: "value2", label: "Option 2" }
-  ]
+  ],
+  defaultValue: "A default value"
 };
 
 <FormComponent field={fieldExample} />
@@ -48,6 +49,7 @@ const fieldExample = {
 | options        | [{ value: "value1", label: "Option 1" },<br>{ value: "value2", label: "Option 2" }] | N       | - |
 | textAreaRows   | number | N | Rows number for textarea |
 | textAreaCols   | number | N | Cols number for textarea |
+| defaultValue | A default value for textarea | N | - |
 
 
 ## Styling
