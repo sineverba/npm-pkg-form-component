@@ -119,6 +119,13 @@ describe("FormComponent Tests", () => {
         { value: 2, label: "bar" }
       ],
       onChange: () => {}
+    },
+    {
+      id: "observationsWithDefaultValue",
+      name: "observationsWithDefaultValue",
+      type: "textarea",
+      defaultValue:
+        "this is a preset value. We can pass a previous text to use into this box"
     }
   ];
 
@@ -367,5 +374,27 @@ describe("FormComponent Tests", () => {
     await userEvent.selectOptions(select, "2"); // Get second value
 
     expect(handleChange).toHaveBeenCalledTimes(1);
+  });
+
+  /**
+   * Test if the FormComponent can render a textarea with a previous text.
+   */
+  it("should render textarea with preset text", () => {
+    render(
+      <FormComponent
+        field={
+          fields.filter(
+            (field) => field.id === "observationsWithDefaultValue"
+          )[0]
+        }
+      />
+    );
+    const textArea = screen.getByLabelText(/observationsWithDefaultValue/i);
+    expect(textArea).toBeInTheDocument();
+
+    const defaultValue = screen.getByText(
+      /this is a preset value. We can pass a previous text to use into this box/i
+    );
+    expect(defaultValue).toBeInTheDocument();
   });
 });

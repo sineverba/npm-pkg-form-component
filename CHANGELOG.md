@@ -1,5 +1,6 @@
 # Next version
 + Upgrade dependencies
++ Add default value to textarea
 
 ## 0.5.0
 + Upgrade dependencies
