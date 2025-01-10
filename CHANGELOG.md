@@ -1,4 +1,8 @@
-# 1.0.0
+# 1.1.0
++ Upgrade dependencies
++ Add type number
+
+## 1.0.0
 + Upgrade dependencies
 + Add default value to textarea
 

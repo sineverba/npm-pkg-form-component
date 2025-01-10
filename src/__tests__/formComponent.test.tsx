@@ -126,6 +126,12 @@ describe("FormComponent Tests", () => {
       type: "textarea",
       defaultValue:
         "this is a preset value. We can pass a previous text to use into this box"
+    },
+    {
+      id: "number",
+      name: "age",
+      label: "your age",
+      type: "number"
     }
   ];
 
@@ -326,7 +332,7 @@ describe("FormComponent Tests", () => {
   /**
    * Test if the FormComponent can render a password input field.
    */
-  it("should render password input field with a custom labeo and verify its type", () => {
+  it("should render password input field with a custom label and verify its type", () => {
     // Render the FormComponent with the password field configuration
     render(
       <FormComponent
@@ -396,5 +402,26 @@ describe("FormComponent Tests", () => {
       /this is a preset value. We can pass a previous text to use into this box/i
     );
     expect(defaultValue).toBeInTheDocument();
+  });
+
+  /**
+   * Test if the FormComponent can render a password input field.
+   */
+  it("should render password input field with a custom label and verify its type", () => {
+    // Render the FormComponent with the password field configuration
+    render(
+      <FormComponent
+        field={fields.filter((field) => field.id === "number")[0]}
+      />
+    );
+
+    // Retrieve the number input element by its label
+    const ageInput = screen.getByLabelText(/your age/i);
+
+    // Check if the number input element is in the document
+    expect(ageInput).toBeInTheDocument();
+
+    // Verify that the input field's type is 'number'
+    expect(ageInput).toHaveAttribute("type", "number");
   });
 });
