@@ -115,6 +115,7 @@ export const FormComponent: React.FC<{ field: any }> = (props) => {
           </>
         );
       case "password":
+      case "number":
         return (
           <>
             <label

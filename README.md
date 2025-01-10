@@ -40,7 +40,7 @@ const fieldExample = {
 | Key of field   | Permitted values                                      | Required | Note |
 |----------------|-------------------------------------------------------|----------| ---- |
 | id             | "inputId"                                             | Y       | - |
-| type           | "select", "checkbox", "textarea", "text"             | Y       | - |
+| type           | "select", "checkbox", "textarea", "text", "password", "number"             | Y       | - |
 | label          | "Select an option", "Agree to terms"                 | N       | - |
 | name           | "fieldName"                                           | Y       | - |
 | onKeyDownRegex | "/^[a-zA-Z0-9]+$/"                                    | N       | - |
