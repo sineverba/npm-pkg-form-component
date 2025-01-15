@@ -84,7 +84,8 @@ describe("FormComponent Tests", () => {
       id: "observationsWithLabel",
       name: "observations",
       label: "write down your observations",
-      type: "textarea"
+      type: "textarea",
+      placeholder: "you can write here everything you want"
     },
     {
       id: "observationsWithRows",
@@ -423,5 +424,22 @@ describe("FormComponent Tests", () => {
 
     // Verify that the input field's type is 'number'
     expect(ageInput).toHaveAttribute("type", "number");
+  });
+
+  /**
+   * Test if the FormComponent can render a textarea with a label and placeholder.
+   */
+  it("should render textarea with label and placeholder", () => {
+    render(
+      <FormComponent
+        field={
+          fields.filter((field) => field.id === "observationsWithLabel")[0]
+        }
+      />
+    );
+    const textArea = screen.getByPlaceholderText(
+      /you can write here everything you want/i
+    );
+    expect(textArea).toBeInTheDocument();
   });
 });

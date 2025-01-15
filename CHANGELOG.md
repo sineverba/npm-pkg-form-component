@@ -1,4 +1,8 @@
-# 1.1.0
+# 1.2.0
++ Upgrade dependencies
++ Add placeholder to textarea
+
+## 1.1.0
 + Upgrade dependencies
 + Add type number
 
