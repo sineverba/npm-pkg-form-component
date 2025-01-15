@@ -1,4 +1,4 @@
-# Next version
+# 1.2.0
 + Upgrade dependencies
 + Add placeholder to textarea
 
