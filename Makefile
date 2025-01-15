@@ -15,7 +15,6 @@ upgrade:
 	npx ncu \
 		-x @testing-library/react \
 		-x @types/react \
-		-x eslint \
 		-u
 	npx update-browserslist-db@latest
 	npm install
