@@ -50,6 +50,7 @@ const fieldExample = {
 | textAreaRows   | number | N | Rows number for textarea |
 | textAreaCols   | number | N | Cols number for textarea |
 | defaultValue | A default value for textarea | N | - |
+| placeholder | A placeholder for textarea | N | - |
 
 
 ## Styling

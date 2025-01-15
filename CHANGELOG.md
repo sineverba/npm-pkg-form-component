@@ -1,6 +1,6 @@
 # Next version
 + Upgrade dependencies
-
++ Add placeholder to textarea
 
 ## 1.1.0
 + Upgrade dependencies
