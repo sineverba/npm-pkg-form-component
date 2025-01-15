@@ -1,4 +1,8 @@
-# 1.1.0
+# Next version
++ Upgrade dependencies
+
+
+## 1.1.0
 + Upgrade dependencies
 + Add type number
 
