@@ -1,4 +1,8 @@
-# 1.2.0
+# 1.3.0
++ Upgrade dependencies
++ Add value to select
+
+## 1.2.0
 + Upgrade dependencies
 + Add placeholder to textarea
 
