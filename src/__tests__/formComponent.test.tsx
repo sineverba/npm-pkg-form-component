@@ -133,6 +133,26 @@ describe("FormComponent Tests", () => {
       name: "age",
       label: "your age",
       type: "number"
+    },
+    {
+      id: "alfaSelectWithAValue",
+      name: "alfaSelectWithAValue",
+      type: "select",
+      value: "alfa",
+      options: [
+        {
+          value: "alfa",
+          label: "First possibility"
+        },
+        {
+          value: "beta",
+          label: "Second possibility"
+        }
+      ],
+      initialOption: {
+        value: null,
+        label: "Make your choice"
+      }
     }
   ];
 
@@ -441,5 +461,25 @@ describe("FormComponent Tests", () => {
       /you can write here everything you want/i
     );
     expect(textArea).toBeInTheDocument();
+  });
+
+  /**
+   * Test if the FormComponent can render a select input field with options.
+   */
+  it("should render select input field with value", () => {
+    render(
+      <FormComponent
+        field={fields.filter((field) => field.id === "alfaSelectWithAValue")[0]}
+      />
+    );
+    const bazNameSelect = screen.getByLabelText(/alfa/i);
+    expect(bazNameSelect).toBeInTheDocument();
+
+    const bazSelect = screen.getByRole("combobox", { name: /alfa/i });
+    expect(bazSelect).toBeInTheDocument();
+
+    // Verify the number of options in the select field.
+    const options = screen.getAllByRole("option");
+    expect(options).toHaveLength(3);
   });
 });

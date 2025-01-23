@@ -59,6 +59,7 @@ export const FormComponent: React.FC<{ field: any }> = (props) => {
               id={field.id}
               name={field.name}
               onChange={(e) => handleChange(e)}
+              value={field.value ?? undefined}
             >
               {/* Optionally render the initial option if it exists */}
               {field.initialOption && (
