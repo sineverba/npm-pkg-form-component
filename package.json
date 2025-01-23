@@ -12,7 +12,7 @@
   },
   "scripts": {
     "build": "tsc",
-    "test": "jest --watchAll",
+    "test": "jest",
     "coverage": "jest --coverage",
     "lint": "npx prettier --config .prettierrc.json -c .",
     "fixlint": "npx prettier --config .prettierrc.json -w .",
