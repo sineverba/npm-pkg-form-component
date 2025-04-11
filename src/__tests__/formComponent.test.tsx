@@ -153,6 +153,19 @@ describe("FormComponent Tests", () => {
         value: null,
         label: "Make your choice"
       }
+    },
+    {
+      id: "inputNumberWithDefaultValue",
+      name: "inputNumberWithDefaultValue",
+      label: "inputNumberWithDefaultValue",
+      type: "number",
+      defaultValue: 666
+    },
+    {
+      id: "inputNumberWithDefaultValueWithoutLabel",
+      name: "inputNumberWithDefaultValueWithoutLabel",
+      type: "number",
+      defaultValue: 666
     }
   ];
 
@@ -481,5 +494,43 @@ describe("FormComponent Tests", () => {
     // Verify the number of options in the select field.
     const options = screen.getAllByRole("option");
     expect(options).toHaveLength(3);
+  });
+
+  /**
+   * Test if the FormComponent can render a number input with a previous text.
+   */
+  it("should render input number with a default value", () => {
+    render(
+      <FormComponent
+        field={
+          fields.filter(
+            (field) => field.id === "inputNumberWithDefaultValue"
+          )[0]
+        }
+      />
+    );
+    const inputNumber = screen.getByLabelText(/inputNumberWithDefaultValue/i);
+    expect(inputNumber).toBeInTheDocument();
+    expect(inputNumber).toHaveValue(666);
+  });
+
+  /**
+   * Test if the FormComponent can render a number input with a previous text without a label.
+   */
+  it("should render input number with a default value", () => {
+    render(
+      <FormComponent
+        field={
+          fields.filter(
+            (field) => field.id === "inputNumberWithDefaultValueWithoutLabel"
+          )[0]
+        }
+      />
+    );
+    const inputNumber = screen.getByLabelText(
+      /inputNumberWithDefaultValueWithoutLabel/i
+    );
+    expect(inputNumber).toBeInTheDocument();
+    expect(inputNumber).toHaveValue(666);
   });
 });

@@ -117,6 +117,23 @@ export const FormComponent: React.FC<{ field: any }> = (props) => {
           </>
         );
       case "password":
+        return (
+          <>
+            <label
+              htmlFor={field.id}
+              className="block text-xs text-gray-600 uppercase"
+            >
+              {field.label ?? field.name}
+            </label>
+            <input
+              id={field.id}
+              type={field.type}
+              name={field.name}
+              className="mt-1 block w-full appearance-none rounded-md border border-gray-300 px-3 py-2 placeholder-gray-400 shadow-sm focus:border-black focus:outline-none focus:ring-black sm:text-sm"
+              onKeyDown={handleKeyDown}
+            />
+          </>
+        );
       case "number":
         return (
           <>
@@ -132,6 +149,7 @@ export const FormComponent: React.FC<{ field: any }> = (props) => {
               name={field.name}
               className="mt-1 block w-full appearance-none rounded-md border border-gray-300 px-3 py-2 placeholder-gray-400 shadow-sm focus:border-black focus:outline-none focus:ring-black sm:text-sm"
               onKeyDown={handleKeyDown}
+              defaultValue={field.defaultValue ?? null}
             />
           </>
         );
