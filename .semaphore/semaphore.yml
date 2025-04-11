@@ -9,9 +9,9 @@ agent:
 global_job_config:
   env_vars:
     - name: SONARSCANNER_VERSION
-      value: 11.1.1.1661_6.2.1
+      value: 11.3.1.1910_7.1.0
     - name: NPM_VERSION
-      value: 11.0.0
+      value: 11.3.0
   secrets:
     - name: ACCESS_TOKENS
 
@@ -40,7 +40,7 @@ blocks:
         - name: Test previous Node versions
           matrix:
             - env_var: NODE_VERSION
-              values: [ "16", "18", "20" ]
+              values: [ "16", "18", "20", "22" ]
           commands:
             - sem-version node $NODE_VERSION
             - npx jest

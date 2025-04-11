@@ -1,4 +1,8 @@
-# 1.3.0
+# 1.4.0
++ Upgrade dependencies
++ Add default value to number
+
+## 1.3.0
 + Upgrade dependencies
 + Add value to select
 
