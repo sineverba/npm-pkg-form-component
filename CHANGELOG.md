@@ -1,4 +1,7 @@
-# 1.5.0
+# 1.6.0
++ Add value to textarea
+
+## 1.5.0
 + Upgrade dependencies
 + Add onchange to textarea
 

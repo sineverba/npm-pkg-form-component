@@ -568,4 +568,24 @@ describe("FormComponent Tests", () => {
     await userEvent.type(textArea, "test text");
     expect(handleChange).toHaveBeenCalled();
   });
+
+  /**
+   * Test if the FormComponent can render a textarea with a controlled value.
+   */
+  it("should render textarea with controlled value", () => {
+    render(
+      <FormComponent
+        field={{
+          id: "controlledTextarea",
+          name: "controlledTextarea",
+          type: "textarea",
+          value: "controlled text value"
+        }}
+      />
+    );
+
+    const textArea = screen.getByLabelText(/controlledTextarea/i);
+    expect(textArea).toBeInTheDocument();
+    expect(textArea).toHaveValue("controlled text value");
+  });
 });
