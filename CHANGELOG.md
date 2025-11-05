@@ -1,4 +1,4 @@
-# Next version
+# 1.6.0
 + Add value to textarea
 
 ## 1.5.0
