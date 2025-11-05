@@ -1,5 +1,6 @@
 # Next version
 + Upgrade dependencies
++ Add onchange to textarea
 
 ## 1.4.0
 + Upgrade dependencies
