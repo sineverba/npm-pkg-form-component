@@ -13,13 +13,17 @@ Form Component
 
 `form-component` returns a Form component, based on input props. It works on `Next` Framework.
 
+## Requirements
+
+- Node.js >= 18.0.0
 
 ## Installation
-`npm install @sineverba/form-component`
+```bash
+npm install @sineverba/form-component
+```
 
 ## Usage
-
-```js
+```javascript
 const fieldExample = {
   id: "inputId",
   type: "select",
@@ -31,29 +35,31 @@ const fieldExample = {
     { value: "value1", label: "Option 1" },
     { value: "value2", label: "Option 2" }
   ],
-  defaultValue: "A default value"
+  defaultValue: "A default value",
+  onChange: (e) => console.log(e.target.value)
 };
 
 <FormComponent field={fieldExample} />
 ```
 
-| Key of field   | Permitted values                                      | Required | Note |
-|----------------|-------------------------------------------------------|----------| ---- |
-| id             | "inputId"                                             | Y       | - |
-| type           | "select", "checkbox", "textarea", "text", "password", "number"             | Y       | - |
-| label          | "Select an option", "Agree to terms"                 | N       | - |
-| name           | "fieldName"                                           | Y       | - |
-| onKeyDownRegex | "/^[a-zA-Z0-9]+$/"                                    | N       | - |
-| onChange | props.onChange props for `checkbox` type | N | - |
-| initialOption  | { value: "initial", label: "Please select" }         | N       | - |
-| options        | [{ value: "value1", label: "Option 1" },<br>{ value: "value2", label: "Option 2" }] | N       | - |
-| textAreaRows   | number | N | Rows number for textarea |
-| textAreaCols   | number | N | Cols number for textarea |
-| defaultValue | A default value for textarea or input number | N | - |
-| placeholder | A placeholder for textarea | N | - |
+## Field Configuration
 
+| Key            | Type                                                  | Required | Description |
+|----------------|-------------------------------------------------------|----------|-------------|
+| id             | string                                                | Y        | Unique identifier for the field |
+| type           | "select" / "checkbox" / "textarea" / "text" / "password" / "number" | Y | Type of input field |
+| name           | string                                                | Y        | Name attribute for the field |
+| label          | string                                                | N        | Label text for the field |
+| onKeyDownRegex | string                                                | N        | Regex pattern to validate key press events (text inputs only) |
+| onChange       | function                                              | N        | Change event handler for checkbox and textarea |
+| initialOption  | { value: string, label: string }                     | N        | Initial option for select fields |
+| options        | Array<{ value: string, label: string }>              | N        | Options array for select fields |
+| value          | string / number                                      | N        | Controlled value for select fields |
+| textAreaRows   | number                                                | N        | Number of rows for textarea |
+| textAreaCols   | number                                                | N        | Number of columns for textarea |
+| defaultValue   | string / number                                      | N        | Default value for textarea or input number |
+| placeholder    | string                                                | N        | Placeholder text for textarea |
 
 ## Styling
 
-+ `textarea` has a className `textarea-fcta`
-
+- `textarea` has a className `textarea-fcta`
