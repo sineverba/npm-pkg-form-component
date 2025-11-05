@@ -40,7 +40,7 @@ blocks:
         - name: Test previous Node versions
           matrix:
             - env_var: NODE_VERSION
-              values: [ "16", "18", "20", "22", "24" ]
+              values: [ "18", "20", "22", "24" ]
           commands:
             - sem-version node $NODE_VERSION
             - npx jest
