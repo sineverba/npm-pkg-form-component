@@ -31,7 +31,9 @@ export const FormComponent: React.FC<{ field: any }> = (props) => {
    * @param e The change event object.
    */
   const handleChange = (
-    e: React.ChangeEvent<HTMLSelectElement | HTMLInputElement>
+    e: React.ChangeEvent<
+      HTMLSelectElement | HTMLInputElement | HTMLTextAreaElement
+    >
   ) => field.onChange(e);
 
   /**
@@ -113,6 +115,7 @@ export const FormComponent: React.FC<{ field: any }> = (props) => {
               cols={field.textAreaCols ?? null}
               defaultValue={field.defaultValue ?? null}
               placeholder={field.placeholder ?? null}
+              onChange={(e) => handleChange(e)}
             />
           </>
         );

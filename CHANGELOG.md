@@ -1,4 +1,8 @@
-# 1.4.0
+# 1.5.0
++ Upgrade dependencies
++ Add onchange to textarea
+
+## 1.4.0
 + Upgrade dependencies
 + Add default value to number
 
