@@ -113,6 +113,7 @@ export const FormComponent: React.FC<{ field: any }> = (props) => {
               name={field.name}
               rows={field.textAreaRows ?? null}
               cols={field.textAreaCols ?? null}
+              value={field.value}
               defaultValue={field.defaultValue ?? null}
               placeholder={field.placeholder ?? null}
               onChange={(e) => handleChange(e)}
