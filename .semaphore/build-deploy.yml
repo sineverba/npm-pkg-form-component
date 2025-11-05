@@ -9,7 +9,7 @@ agent:
 global_job_config:
   env_vars:
     - name: NPM_VERSION
-      value: 11.3.0
+      value: 11.6.2
   secrets:
     - name: ACCESS_TOKENS
 
@@ -24,4 +24,4 @@ blocks:
             - npm ci
             - npm run build
             - mv npmrc.txt .npmrc
-            - npm publish
+            - npm publish --access public

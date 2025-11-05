@@ -533,4 +533,16 @@ describe("FormComponent Tests", () => {
     expect(inputNumber).toBeInTheDocument();
     expect(inputNumber).toHaveValue(666);
   });
+
+  /**
+   * Test if the FormComponent handles key down events when onKeyDownRegex is not set.
+   */
+  it("should handle key down events without onKeyDown set", () => {
+    render(<FormComponent field={fields[0]} />);
+    const fooNameInputText = screen.getByLabelText(/fooName/i);
+    expect(fooNameInputText).toBeInTheDocument();
+
+    // Simulate key down event without regex validation
+    fireEvent.keyDown(fooNameInputText, { key: "a" });
+  });
 });
