@@ -417,28 +417,6 @@ describe("FormComponent Tests", () => {
   });
 
   /**
-   * Test if the FormComponent can render a textarea with a previous text.
-   */
-  it("should render textarea with preset text", () => {
-    render(
-      <FormComponent
-        field={
-          fields.filter(
-            (field) => field.id === "observationsWithDefaultValue"
-          )[0]
-        }
-      />
-    );
-    const textArea = screen.getByLabelText(/observationsWithDefaultValue/i);
-    expect(textArea).toBeInTheDocument();
-
-    const defaultValue = screen.getByText(
-      /this is a preset value. We can pass a previous text to use into this box/i
-    );
-    expect(defaultValue).toBeInTheDocument();
-  });
-
-  /**
    * Test if the FormComponent can render a password input field.
    */
   it("should render password input field with a custom label and verify its type", () => {

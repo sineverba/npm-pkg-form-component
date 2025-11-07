@@ -1,4 +1,7 @@
-# 1.6.0
+# 1.7.0
++ Remove default value to textarea
+
+## 1.6.0
 + Add value to textarea
 
 ## 1.5.0
