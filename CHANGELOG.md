@@ -1,4 +1,7 @@
-# 1.7.0
+# Next version
++ Add onKeyDown to textarea
+
+## 1.7.0
 + Remove default value to textarea
 
 ## 1.6.0

@@ -566,4 +566,26 @@ describe("FormComponent Tests", () => {
     expect(textArea).toBeInTheDocument();
     expect(textArea).toHaveValue("controlled text value");
   });
+
+  /**
+   * Test if the FormComponent handles key down events on a textarea with an onKeyDown regex.
+   */
+  it("should handle key down events on textarea with onKeyDown set", () => {
+    render(
+      <FormComponent
+        field={{
+          id: "restrictedTextarea",
+          name: "restrictedTextarea",
+          type: "textarea",
+          onKeyDownRegex: /[^a-zA-Z0-9]/g
+        }}
+      />
+    );
+    const textArea = screen.getByLabelText(/restrictedTextarea/i);
+    expect(textArea).toBeInTheDocument();
+
+    // Simulate key down events
+    fireEvent.keyDown(textArea, { key: "a" });
+    fireEvent.keyDown(textArea, { key: "?" });
+  });
 });

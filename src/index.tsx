@@ -16,7 +16,9 @@ export const FormComponent: React.FC<{ field: any }> = (props) => {
    *
    * @param e The key down event object.
    */
-  const handleKeyDown = (e: React.KeyboardEvent<HTMLInputElement>) => {
+  const handleKeyDown = (
+    e: React.KeyboardEvent<HTMLInputElement | HTMLTextAreaElement>
+  ) => {
     if (field.onKeyDownRegex) {
       const regex = new RegExp(field.onKeyDownRegex);
       if (regex.test(e.key)) {
@@ -116,6 +118,7 @@ export const FormComponent: React.FC<{ field: any }> = (props) => {
               value={field.value}
               placeholder={field.placeholder ?? null}
               onChange={(e) => handleChange(e)}
+              onKeyDown={handleKeyDown}
             />
           </>
         );
