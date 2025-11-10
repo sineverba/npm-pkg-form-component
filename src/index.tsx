@@ -19,6 +19,11 @@ export const FormComponent: React.FC<{ field: any }> = (props) => {
   const handleKeyDown = (
     e: React.KeyboardEvent<HTMLInputElement | HTMLTextAreaElement>
   ) => {
+    if (field.onKeyDown) {
+      field.onKeyDown(e);
+      return;
+    }
+
     if (field.onKeyDownRegex) {
       const regex = new RegExp(field.onKeyDownRegex);
       if (regex.test(e.key)) {
