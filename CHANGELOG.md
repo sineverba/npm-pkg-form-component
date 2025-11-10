@@ -1,4 +1,4 @@
-# Next version
+# 1.8.0
 + Add onKeyDown to textarea
 
 ## 1.7.0
