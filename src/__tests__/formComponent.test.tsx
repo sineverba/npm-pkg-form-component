@@ -588,4 +588,69 @@ describe("FormComponent Tests", () => {
     fireEvent.keyDown(textArea, { key: "a" });
     fireEvent.keyDown(textArea, { key: "?" });
   });
+
+  /**
+   * Test if the FormComponent handles key down events on a textarea with an onKeyDown regex.
+   */
+  it("should handle key down events on textarea with onKeyDown set", () => {
+    render(
+      <FormComponent
+        field={{
+          id: "restrictedTextarea",
+          name: "restrictedTextarea",
+          type: "textarea",
+          onKeyDownRegex: /[^a-zA-Z0-9]/g
+        }}
+      />
+    );
+    const textArea = screen.getByLabelText(/restrictedTextarea/i);
+    expect(textArea).toBeInTheDocument();
+
+    fireEvent.keyDown(textArea, { key: "a" });
+    fireEvent.keyDown(textArea, { key: "?" });
+  });
+
+  /**
+   * Test if the FormComponent handles custom onKeyDown handler on textarea.
+   */
+  it("should handle custom onKeyDown handler on textarea", () => {
+    const customHandler = jest.fn();
+    render(
+      <FormComponent
+        field={{
+          id: "customTextarea",
+          name: "customTextarea",
+          type: "textarea",
+          onKeyDown: customHandler
+        }}
+      />
+    );
+    const textArea = screen.getByLabelText(/customTextarea/i);
+    expect(textArea).toBeInTheDocument();
+
+    fireEvent.keyDown(textArea, { key: "Enter" });
+    expect(customHandler).toHaveBeenCalledTimes(1);
+  });
+
+  /**
+   * Test if custom onKeyDown handler takes precedence over onKeyDownRegex on textarea.
+   */
+  it("should prioritize custom onKeyDown over regex on textarea", () => {
+    const customHandler = jest.fn();
+    render(
+      <FormComponent
+        field={{
+          id: "priorityTextarea",
+          name: "priorityTextarea",
+          type: "textarea",
+          onKeyDown: customHandler,
+          onKeyDownRegex: /[^a-zA-Z0-9]/g
+        }}
+      />
+    );
+    const textArea = screen.getByLabelText(/priorityTextarea/i);
+
+    fireEvent.keyDown(textArea, { key: "?" });
+    expect(customHandler).toHaveBeenCalledTimes(1);
+  });
 });
