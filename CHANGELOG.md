@@ -1,4 +1,7 @@
-# 1.9.0
+# Next version
++ Add double condition to textarea
+
+## 1.9.0
 + Add onkeydown to textarea - 2
 
 ## 1.8.0

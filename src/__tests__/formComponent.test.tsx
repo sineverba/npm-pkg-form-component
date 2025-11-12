@@ -653,4 +653,62 @@ describe("FormComponent Tests", () => {
     fireEvent.keyDown(textArea, { key: "?" });
     expect(customHandler).toHaveBeenCalledTimes(1);
   });
+
+  /**
+   * Test if the FormComponent can render a textarea with defaultValue (uncontrolled).
+   */
+  it("should render textarea with defaultValue when value is not provided", () => {
+    render(
+      <FormComponent
+        field={{
+          id: "uncontrolledTextarea",
+          name: "uncontrolledTextarea",
+          type: "textarea",
+          defaultValue: "initial text from db"
+        }}
+      />
+    );
+    const textArea = screen.getByLabelText(/uncontrolledTextarea/i);
+    expect(textArea).toBeInTheDocument();
+    expect(textArea).toHaveValue("initial text from db");
+  });
+
+  /**
+   * Test if the FormComponent can render a textarea with value (controlled).
+   */
+  it("should render textarea with value when provided (controlled)", () => {
+    render(
+      <FormComponent
+        field={{
+          id: "controlledTextarea",
+          name: "controlledTextarea",
+          type: "textarea",
+          value: "controlled text value"
+        }}
+      />
+    );
+    const textArea = screen.getByLabelText(/controlledTextarea/i);
+    expect(textArea).toBeInTheDocument();
+    expect(textArea).toHaveValue("controlled text value");
+  });
+
+  /**
+   * Test if value takes precedence over defaultValue in textarea.
+   */
+  it("should use value over defaultValue when both are provided", () => {
+    render(
+      <FormComponent
+        field={{
+          id: "precedenceTextarea",
+          name: "precedenceTextarea",
+          type: "textarea",
+          value: "controlled value",
+          defaultValue: "default value"
+        }}
+      />
+    );
+    const textArea = screen.getByLabelText(/precedenceTextarea/i);
+    expect(textArea).toBeInTheDocument();
+    expect(textArea).toHaveValue("controlled value");
+  });
 });
