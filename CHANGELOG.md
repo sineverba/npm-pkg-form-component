@@ -1,4 +1,4 @@
-# Next version
+# 1.10.0
 + Add double condition to textarea
 
 ## 1.9.0
