@@ -712,3 +712,68 @@ describe("FormComponent Tests", () => {
     expect(textArea).toHaveValue("controlled value");
   });
 });
+
+/**
+ * Test if the FormComponent can render a checkbox with defaultChecked true.
+ */
+it("should render checkbox with defaultChecked true", () => {
+  render(
+    <FormComponent
+      field={{
+        id: "defaultCheckedTrue",
+        name: "defaultCheckedTrue",
+        type: "checkbox",
+        defaultChecked: true,
+        onChange: () => {}
+      }}
+    />
+  );
+  const checkbox = screen.getByRole("checkbox", {
+    name: /defaultCheckedTrue/i
+  });
+  expect(checkbox).toBeInTheDocument();
+  expect(checkbox).toBeChecked();
+});
+
+/**
+ * Test if the FormComponent can render a checkbox with defaultChecked false.
+ */
+it("should render checkbox with defaultChecked false", () => {
+  render(
+    <FormComponent
+      field={{
+        id: "defaultCheckedFalse",
+        name: "defaultCheckedFalse",
+        type: "checkbox",
+        defaultChecked: false,
+        onChange: () => {}
+      }}
+    />
+  );
+  const checkbox = screen.getByRole("checkbox", {
+    name: /defaultCheckedFalse/i
+  });
+  expect(checkbox).toBeInTheDocument();
+  expect(checkbox).not.toBeChecked();
+});
+
+/**
+ * Test if the FormComponent renders checkbox unchecked when defaultChecked is not provided.
+ */
+it("should render checkbox unchecked when defaultChecked is not provided", () => {
+  render(
+    <FormComponent
+      field={{
+        id: "noDefaultChecked",
+        name: "noDefaultChecked",
+        type: "checkbox",
+        onChange: () => {}
+      }}
+    />
+  );
+  const checkbox = screen.getByRole("checkbox", {
+    name: /noDefaultChecked/i
+  });
+  expect(checkbox).toBeInTheDocument();
+  expect(checkbox).not.toBeChecked();
+});

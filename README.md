@@ -50,14 +50,16 @@ const fieldExample = {
 | type           | "select" / "checkbox" / "textarea" / "text" / "password" / "number" | Y | Type of input field |
 | name           | string                                                | Y        | Name attribute for the field |
 | label          | string                                                | N        | Label text for the field |
-| onKeyDownRegex | string                                                | N        | Regex pattern to validate key press events (text inputs only) |
-| onChange       | function                                              | N        | Change event handler for checkbox and textarea |
+| onKeyDownRegex | string                                                | N        | Regex pattern to validate key press events (text and textarea inputs only) |
+| onKeyDown      | function                                              | N        | Custom key down event handler (text and textarea inputs only) |
+| onChange       | function                                              | N        | Change event handler |
 | initialOption  | { value: string, label: string }                     | N        | Initial option for select fields |
 | options        | Array<{ value: string, label: string }>              | N        | Options array for select fields |
-| value          | string / number                                      | N        | Controlled value for select fields |
+| value          | string / number                                      | N        | Controlled value for select and textarea fields |
 | textAreaRows   | number                                                | N        | Number of rows for textarea |
 | textAreaCols   | number                                                | N        | Number of columns for textarea |
 | defaultValue   | string / number                                      | N        | Default value for textarea or input number |
+| defaultChecked | boolean                                               | N        | Default checked state for checkbox (default: false) |
 | placeholder    | string                                                | N        | Placeholder text for textarea |
 
 ## Styling

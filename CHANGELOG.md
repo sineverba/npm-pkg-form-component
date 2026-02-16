@@ -1,4 +1,8 @@
-# 1.10.0
+# 1.11.0
++ Upgrade dependencies
++ Add default checked to checkbox
+
+## 1.10.0
 + Add double condition to textarea
 
 ## 1.9.0
