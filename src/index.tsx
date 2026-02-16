@@ -100,6 +100,7 @@ export const FormComponent: React.FC<{ field: any }> = (props) => {
               name={field.name}
               className="mr-2 leading-tight"
               type="checkbox"
+              defaultChecked={field.defaultChecked ?? false}
               onChange={(e) => handleChange(e)}
             />
             <span className="text-sm">{field.label ?? field.name}</span>
