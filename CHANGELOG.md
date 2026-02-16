@@ -1,4 +1,7 @@
-# 1.10.0
+# Next version
++ Upgrade dependencies
+
+## 1.10.0
 + Add double condition to textarea
 
 ## 1.9.0
