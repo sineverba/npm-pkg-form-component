@@ -1,4 +1,4 @@
-# Next version
+# 1.11.0
 + Upgrade dependencies
 + Add default checked to checkbox
 
