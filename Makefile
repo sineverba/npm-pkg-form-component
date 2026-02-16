@@ -1,4 +1,4 @@
-SONARSCANNER_VERSION=11.5.0.2154_7.3.0
+SONARSCANNER_VERSION=12.0.0.3214_8.0.1
 
 sonar:
 	docker run \
@@ -13,6 +13,8 @@ sonar:
 
 upgrade:
 	npx ncu \
+		-x @eslint/js \
+		-x eslint \
 		-x @testing-library/react \
 		-x @types/react \
 		-u
